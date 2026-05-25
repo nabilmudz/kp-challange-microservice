@@ -52,6 +52,12 @@ func (h *OrderHandler) Create(c *gin.Context) {
 				"error":      "Insufficient stock",
 				"message":    "Product quantity is not enough",
 			})
+		case errors.Is(err, service.ErrProductServiceUnavailable):
+			c.JSON(http.StatusServiceUnavailable, gin.H{
+				"statusCode": http.StatusServiceUnavailable,
+				"error":      "Service unavailable",
+				"message":    "Product service is unavailable",
+			})
 		default:
 			c.JSON(http.StatusInternalServerError, gin.H{
 				"statusCode": http.StatusInternalServerError,

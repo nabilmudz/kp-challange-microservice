@@ -8,3 +8,5 @@
 *.test
 
 /bin/
+tmp/
+.gocache

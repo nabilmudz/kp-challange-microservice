@@ -26,8 +26,8 @@ func NewPostgresDB(cfg *config.Config) *sqlx.DB {
 		log.Fatalf("[Postgres] Failed to connect: %v", err)
 	}
 
-	db.SetMaxOpenConns(100)
-	db.SetMaxIdleConns(10)
+	db.SetMaxOpenConns(200)
+	db.SetMaxIdleConns(50)
 	db.SetConnMaxLifetime(30 * time.Minute)
 
 	if err := migrate(db); err != nil {

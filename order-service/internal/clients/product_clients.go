@@ -22,8 +22,15 @@ type ProductClient struct {
 
 func NewProductClient(baseURL string) *ProductClient {
 	return &ProductClient{
-		baseURL:    baseURL,
-		httpClient: &http.Client{},
+		baseURL: baseURL,
+		httpClient: &http.Client{
+			Timeout: 5 * time.Second,
+			Transport: &http.Transport{
+				MaxIdleConns:        200,
+				MaxIdleConnsPerHost: 200,
+				IdleConnTimeout:     90 * time.Second,
+			},
+		},
 	}
 }
 
