@@ -5,7 +5,7 @@ import { Rate, Trend } from 'k6/metrics';
 const errorRate = new Rate('errors');
 const orderDuration = new Trend('order_duration', true);
 
-const PRODUCT_ID = '1e37923f-aa96-4618-8ef8-5f4c08762a78';
+const PRODUCT_ID = '7d8d3c31-0b08-4a4b-ba33-4ac3fa97cc08';
 const BASE_URL = 'http://localhost:3002';
 
 export const options = {
